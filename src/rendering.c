@@ -149,21 +149,21 @@ void DrawMenuScreen(GameContext *ctx) {
 }
 
 void DrawVictoryScreen(const GameContext *ctx) {
-    DrawRectangle(0, 0, 1000, 700, Fade(BLACK, 0.8f));
+    DrawRectangle(0, 0, 1100, 600, Fade(BLACK, 0.8f));
     DrawText("CONCURRENCE STABILISÉE !", 220, 240, 38, LIME);
     DrawText(TextFormat("Le niveau %d est desormais sous controle.", ctx->current_level_idx), 220, 310, 18, WHITE);
     DrawText("Appuyez sur [ N ] pour initialiser le niveau suivant", 220, 400, 16, GOLD);
 }
 
 void DrawGameOverScreen(const GameContext *ctx) {
-    DrawRectangle(0, 0, 1000, 700, Fade(BLACK, 0.85f));
+    DrawRectangle(0, 0, 1100, 600, Fade(BLACK, 0.85f));
     DrawText("RUPTURE DU CONFINEMENT CORE", 180, 240, 36, RED);
     DrawText("Le delai ou la limite de mouvements a expire.", 180, 310, 18, LIGHTGRAY);
     DrawText("Appuyez sur [ R ] pour purger le plasma et recommencer (+1 Surcharge)", 180, 400, 15, GOLD);
 }
 
 void DrawDefinitiveInstabilityScreen(const GameContext *ctx) {
-    DrawRectangle(0, 0, 1000, 700, MAROON);
+    DrawRectangle(0, 0, 1100, 600, MAROON);
     DrawText("EVACUATION D'URGENCE SYSTEME", 150, 220, 40, WHITE);
     DrawText("CRITICAL ERROR: FUSION DU COEUR DU REACTEUR", 150, 290, 20, BLACK);
     DrawText("Les 5 barres de surcharge ont fondu sous la pression.", 150, 350, 16, LIGHTGRAY);

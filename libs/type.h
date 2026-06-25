@@ -70,4 +70,16 @@ typedef struct {
     GameState state;                     // État actuel du système
 } GameContext;
 
+typedef struct {
+    char operator_name_1[50];
+    char operator_name_2[50];
+    char operator_name_3[50];
+    int surcharge_1;
+    int surcharge_2;
+    int surcharge_3;
+    int current_level_idx_1;
+    int current_level_idx_2;
+    int current_level_idx_3;
+} GameSave;
+
 #endif // TYPES_H

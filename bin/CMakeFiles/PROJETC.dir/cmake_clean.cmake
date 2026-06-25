@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PROJETC.dir/src/rendering.c.obj.d"
   "CMakeFiles/PROJETC.dir/src/sauvegarde.c.obj"
   "CMakeFiles/PROJETC.dir/src/sauvegarde.c.obj.d"
+  "CMakeFiles/PROJETC.dir/src/teste.c.obj"
+  "CMakeFiles/PROJETC.dir/src/teste.c.obj.d"
   "bin/PROJETC.exe"
   "bin/PROJETC.exe.manifest"
   "bin/PROJETC.pdb"

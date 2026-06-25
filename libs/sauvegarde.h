@@ -5,9 +5,11 @@
 #include "type.h"
 
 // Sauvegarde les informations importantes de la partie dans un fichier
-bool save_progress(const GameContext *ctx);
+bool save_progress(const GameContext *ctx,  GameSave *ctxs);
 
 // Charge les informations sauvegardées pour reprendre la partie
-bool load_progress(GameContext *ctx);
+bool load_progress(GameContext *ctx,  GameSave *ctxs);
+
+void init_save(GameSave *s);
 
 #endif

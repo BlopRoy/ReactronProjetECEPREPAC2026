@@ -23,6 +23,7 @@ add_executable(${PROJECT_NAME}
     src/gestion_niveaux.c
     src/sauvegarde.c
     src/rendering.c
+    src/teste.c
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES

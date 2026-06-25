@@ -17,4 +17,7 @@ CMakeFiles/PROJETC.dir/src/sauvegarde.c.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/string.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h

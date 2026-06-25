@@ -376,6 +376,30 @@ src/sauvegarde.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJETC.dir\build.make CMakeFiles/PROJETC.dir/src/sauvegarde.c.s
 .PHONY : src/sauvegarde.c.s
 
+src/teste.obj: src/teste.c.obj
+.PHONY : src/teste.obj
+
+# target to build an object file
+src/teste.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJETC.dir\build.make CMakeFiles/PROJETC.dir/src/teste.c.obj
+.PHONY : src/teste.c.obj
+
+src/teste.i: src/teste.c.i
+.PHONY : src/teste.i
+
+# target to preprocess a source file
+src/teste.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJETC.dir\build.make CMakeFiles/PROJETC.dir/src/teste.c.i
+.PHONY : src/teste.c.i
+
+src/teste.s: src/teste.c.s
+.PHONY : src/teste.s
+
+# target to generate assembly for a file
+src/teste.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJETC.dir\build.make CMakeFiles/PROJETC.dir/src/teste.c.s
+.PHONY : src/teste.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -412,6 +436,9 @@ help:
 	@echo ... src/sauvegarde.obj
 	@echo ... src/sauvegarde.i
 	@echo ... src/sauvegarde.s
+	@echo ... src/teste.obj
+	@echo ... src/teste.i
+	@echo ... src/teste.s
 .PHONY : help
 
 

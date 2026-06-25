@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/src/main.c" "CMakeFiles/PROJETC.dir/src/main.c.obj" "gcc" "CMakeFiles/PROJETC.dir/src/main.c.obj.d"
   "C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/src/rendering.c" "CMakeFiles/PROJETC.dir/src/rendering.c.obj" "gcc" "CMakeFiles/PROJETC.dir/src/rendering.c.obj.d"
   "C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/src/sauvegarde.c" "CMakeFiles/PROJETC.dir/src/sauvegarde.c.obj" "gcc" "CMakeFiles/PROJETC.dir/src/sauvegarde.c.obj.d"
+  "C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/src/teste.c" "CMakeFiles/PROJETC.dir/src/teste.c.obj" "gcc" "CMakeFiles/PROJETC.dir/src/teste.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

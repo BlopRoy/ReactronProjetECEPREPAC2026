@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/bin/cmake_install.cmake",
+		"C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/bin/libs/raylib/cmake_install.cmake",
+		"C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/bin/libs/raylib/raylib/cmake_install.cmake",
+		"C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/bin/libs/raylib/raylib/external/glfw/cmake_install.cmake",
+		"C:/Users/usr/Documents/GitHub/ReactronProjetECEPREPAC2026/bin/libs/raylib/raylib/external/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

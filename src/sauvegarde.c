@@ -120,26 +120,6 @@ bool load_progress(GameContext *ctx, GameSave *ctxs) {
         &ctxs->current_level_idx_3,
         &ctxs->surcharge_3
     );
-
-    printf("result = %d\n", result);
-
-printf("slot1='%s' lvl=%d sur=%d\n",
-       ctxs->operator_name_1,
-       ctxs->current_level_idx_1,
-       ctxs->surcharge_1);
-
-printf("slot2='%s' lvl=%d sur=%d\n",
-       ctxs->operator_name_2,
-       ctxs->current_level_idx_2,
-       ctxs->surcharge_2);
-
-printf("slot3='%s' lvl=%d sur=%d\n",
-       ctxs->operator_name_3,
-       ctxs->current_level_idx_3,
-       ctxs->surcharge_3);
-
-printf("player='%s'\n", ctx->operator_name);
-
     fclose(file);
 
     if (result != 9) {
@@ -150,8 +130,6 @@ printf("player='%s'\n", ctx->operator_name);
     // trouver le bon slot
     if (strcmp(ctx->operator_name, ctxs->operator_name_1) == 0) {
         ctx->current_level_idx = ctxs->current_level_idx_1;
-        printf("%i",ctx->current_level_idx);
-        printf("caca");
         ctx->surcharge = ctxs->surcharge_1;
     }
     else if (strcmp(ctx->operator_name, ctxs->operator_name_2) == 0) {

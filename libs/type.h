@@ -36,6 +36,12 @@ typedef enum {
     STATE_CLEAR      // Instabilité critique définitive (Game Over global, Surcharge = 5)
 } GameState;
 
+typedef struct{
+    float scrollingBack;
+    float scrollingMid;
+    float scrollingFore;
+} ScrollingBackground;
+
 /**
  * @brief Objectifs quantiques et limites du niveau en cours de traitement.
  */
@@ -53,6 +59,18 @@ typedef struct {
  * Transite par pointeur à travers l'ensemble des modules logiques et graphiques.
  */
 typedef struct {
+    char operator_name_1[50];
+    char operator_name_2[50];
+    char operator_name_3[50];
+    int surcharge_1;
+    int surcharge_2;
+    int surcharge_3;
+    int current_level_idx_1;
+    int current_level_idx_2;
+    int current_level_idx_3;
+} GameSave;
+
+typedef struct {
     CellType matrix[MAP_ROWS][MAP_COLS]; // Matrice du cœur du réacteur
     int marked[MAP_ROWS][MAP_COLS];      // Grille de détection algorithmique (1 si aligné, 0 sinon)
     
@@ -68,18 +86,7 @@ typedef struct {
     
     LevelConfig level;                   // Configuration et scores du niveau courant
     GameState state;                     // État actuel du système
+    GameSave save;
 } GameContext;
-
-typedef struct {
-    char operator_name_1[50];
-    char operator_name_2[50];
-    char operator_name_3[50];
-    int surcharge_1;
-    int surcharge_2;
-    int surcharge_3;
-    int current_level_idx_1;
-    int current_level_idx_2;
-    int current_level_idx_3;
-} GameSave;
 
 #endif // TYPES_H

@@ -145,7 +145,15 @@ void DrawMenuScreen(GameContext *ctx) {
         DrawText("LOG-ID...", 260, 378, 18, DARKGRAY);
     }
 
-    DrawText("Appuyez sur [ ENTRÉE ] pour lancer le systeme core", 250, 460, 15, GOLD);
+    DrawText("Appuyez sur [ ENTRÉE ] pour lancer le systeme core", 250, 460, 15, WHITE);
+    DrawText("Appuyez sur [ ESC ] pour quitter le systeme care", 250, 480, 15, WHITE);
+
+    DrawText("SLOT 1 :",700,220,30,WHITE);
+    DrawText(ctx->save.operator_name_1,850,220,30,WHITE);
+    DrawText("SLOT 2 :",700,275,30,WHITE);
+    DrawText(ctx->save.operator_name_2,850,275,30,WHITE);
+    DrawText("SLOT 3 :",700,330,30,WHITE);
+    DrawText(ctx->save.operator_name_3,850,330,30,WHITE);
 }
 
 void DrawVictoryScreen(const GameContext *ctx) {
@@ -168,4 +176,31 @@ void DrawDefinitiveInstabilityScreen(const GameContext *ctx) {
     DrawText("CRITICAL ERROR: FUSION DU COEUR DU REACTEUR", 150, 290, 20, BLACK);
     DrawText("Les 5 barres de surcharge ont fondu sous la pression.", 150, 350, 16, LIGHTGRAY);
     DrawText("Appuyez sur [ ENTRÉE ] pour reinitialiser completement la grille", 150, 480, 16, GOLD);
+}
+
+void DrawMovingBackground(ScrollingBackground *b,Texture2D background,Texture2D midground, Texture2D foreground) {
+    b->scrollingBack -= 0.1f;
+    b->scrollingMid -= 0.5f;
+    b->scrollingFore -= 1.0f;
+
+    // NOTE: Texture is scaled twice its size, so it sould be considered on scrolling
+    if (b->scrollingBack <= -background.width*2) b->scrollingBack = 0;
+    if (b->scrollingMid <= -midground.width*2) b->scrollingMid = 0;
+    if (b->scrollingFore <= -foreground.width*2) b->scrollingFore = 0;
+
+    ClearBackground(GetColor(0x052c46ff));
+
+    // Draw background image twice
+    // NOTE: Texture is scaled twice its size
+    DrawTextureEx(background, (Vector2){ b->scrollingBack, 170 }, 0.0f, 2.0f, WHITE);
+    DrawTextureEx(background, (Vector2){ background.width*2 + b->scrollingBack, 170 }, 0.0f, 2.0f, WHITE);
+
+    // Draw midground image twice
+    DrawTextureEx(midground, (Vector2){ b->scrollingMid, 170 }, 0.0f, 2.0f, WHITE);
+    DrawTextureEx(midground, (Vector2){ midground.width*2 + b->scrollingMid, 170 }, 0.0f, 2.0f, WHITE);
+
+    // Draw foreground image twice
+    DrawTextureEx(foreground, (Vector2){ b->scrollingFore, 220 }, 0.0f, 2.0f, WHITE);
+    DrawTextureEx(foreground, (Vector2){ foreground.width*2 + b->scrollingFore, 220 }, 0.0f, 2.0f, WHITE);
+
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <teste.h>
 
-void teste(const GameContext *ctx, const GameSave *save) {
+void teste(const GameContext *ctx) {
     int i, j;
 
     printf("===== GAME CONTEXT =====\n");
@@ -55,19 +55,19 @@ void teste(const GameContext *ctx, const GameSave *save) {
     printf("\n===== SAVE SLOTS =====\n");
 
     printf("Slot 1:\n");
-    printf("  Name      : %s\n", save->operator_name_1);
-    printf("  Level     : %d\n", save->current_level_idx_1);
-    printf("  Surcharge : %d\n", save->surcharge_1);
+    printf("  Name      : %s\n", ctx->save.operator_name_1);
+    printf("  Level     : %d\n", ctx->save.current_level_idx_1);
+    printf("  Surcharge : %d\n", ctx->save.surcharge_1);
 
     printf("Slot 2:\n");
-    printf("  Name      : %s\n", save->operator_name_2);
-    printf("  Level     : %d\n", save->current_level_idx_2);
-    printf("  Surcharge : %d\n", save->surcharge_2);
+    printf("  Name      : %s\n", ctx->save.operator_name_2);
+    printf("  Level     : %d\n", ctx->save.current_level_idx_2);
+    printf("  Surcharge : %d\n", ctx->save.surcharge_2);
 
     printf("Slot 3:\n");
-    printf("  Name      : %s\n", save->operator_name_3);
-    printf("  Level     : %d\n", save->current_level_idx_3);
-    printf("  Surcharge : %d\n", save->surcharge_3);
+    printf("  Name      : %s\n", ctx->save.operator_name_3);
+    printf("  Level     : %d\n", ctx->save.current_level_idx_3);
+    printf("  Surcharge : %d\n", ctx->save.surcharge_3);
 
     printf("=======================\n");
 }

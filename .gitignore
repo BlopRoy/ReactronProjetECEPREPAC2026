@@ -1,0 +1,9 @@
+# Ignorer les fichiers de build et binaires partout
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+*.exe
+build/

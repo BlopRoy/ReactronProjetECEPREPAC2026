@@ -11,12 +11,12 @@
 </div>
 
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sommaire</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#a-propos-du-projet">A Propos Du Projet</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#construit-avec">Construit Avec</a></li>
       </ul>
     </li>
     <li>
@@ -29,9 +29,9 @@
   </ol>
 </details>
 
-## About The Project
+## A Propos Du Projet
 
-![Product Name Screen Shot](assets/image/projet.png)
+![ScrenShotJeux](assets/image/projet.png)
 
 **Reactron** est un jeu de puzzle en 2D développé en C avec la bibliothèque [raylib](https://www.raylib.com/). Le joueur incarne un opérateur chargé de stabiliser le cœur d'un réacteur quantique en alignant des cellules d'énergie sur une grille 20×12.
 
@@ -50,7 +50,7 @@ Le jeu reprend les mécaniques d'un *match-3* classique (style Candy Crush / Bej
 
 <p align="right">(<a href="#readme-top">retour en haut</a>)</p>
 
-### Built With
+### Construit Avec
 
 * [![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)](https://www.c-language.org/)
 * [![Raylib](https://img.shields.io/badge/Raylib-8A2BE2?style=flat)](https://www.raylib.com/)

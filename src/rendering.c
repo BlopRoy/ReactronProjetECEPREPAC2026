@@ -58,7 +58,7 @@ void DrawGridi(const GameContext *ctx) {
     // Rendu graphique du curseur utilisateur
     int cursor_posX = GRID_OFFSET_X + (ctx->cursor_x * CELL_SIZE);
     int cursor_posY = GRID_OFFSET_Y + (ctx->cursor_y * CELL_SIZE);
-    DrawRectangleLinesEx((Rectangle){ (float)cursor_posX, (float)cursor_posY, CELL_SIZE, CELL_SIZE }, 2.5f, SKYBLUE);
+    DrawRectangleLinesEx((Rectangle){ (float)cursor_posX, (float)cursor_posY, CELL_SIZE, CELL_SIZE }, 2.5f, WHITE);
 
     // Rendu de la cellule sélectionnée pour couplage/permutation
     if (ctx->selected_x != -1 && ctx->selected_y != -1) {

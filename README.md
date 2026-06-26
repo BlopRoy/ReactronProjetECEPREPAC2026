@@ -1,27 +1,15 @@
-[![Contributors][contributors-shield]][contributors-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/BlopRoy/ReactronProjetECEPREPAC2026">
     <img src="assets/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Reactron</h3>
+  <h3 align="center">Reactron</h3>
 
   <p align="center">
-    Projet Prepac Promo 2026
-    <br />
-    <br />
-    <br />
+    Projet Prepac - Promo 2026
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -32,38 +20,29 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+      <a href="#prérequis">Prérequis</a>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#compilation-et-lancement">Compilation et lancement</a></li>
+    <li><a href="#documentation">Documentation</a></li>
+    <li><a href="#sauvegarde">Sauvegarde</a></li>
   </ol>
 </details>
 
-
-
-<!-- DESCRIPTION -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](assets/image/projet.png)
+![Product Name Screen Shot](assets/image/projet.png)
 
- **Reactron** est un jeu de puzzle en 2D développé en C avec la bibliothèque [raylib](https://www.raylib.com/). Le joueur incarne un opérateur chargé de stabiliser le cœur d'un réacteur quantique en alignant des cellules d'énergie sur une grille 20×12.
+**Reactron** est un jeu de puzzle en 2D développé en C avec la bibliothèque [raylib](https://www.raylib.com/). Le joueur incarne un opérateur chargé de stabiliser le cœur d'un réacteur quantique en alignant des cellules d'énergie sur une grille 20×12.
 
 Le jeu reprend les mécaniques d'un *match-3* classique (style Candy Crush / Bejeweled) :
-- échange de cellules adjacentes,
-- détection d'alignements horizontaux et verticaux de 3 cellules ou plus,
-- effets de cascade (gravité + remplissage automatique),
-- conditions de victoire et d'échec par niveau,
-- système de sauvegarde multi-profils.
+- Échange de cellules adjacentes,
+- Détection d'alignements horizontaux et verticaux de 3 cellules ou plus,
+- Effets de cascade (gravité + remplissage automatique),
+- Conditions de victoire et d'échec par niveau,
+- Système de sauvegarde multi-profils.
 
-####Ce Projet a était fait par:
+#### Ce projet a été réalisé par :
 - `BlopRoy`
 - `Fotoen`
 - `legenderylegend`
@@ -71,15 +50,12 @@ Le jeu reprend les mécaniques d'un *match-3* classique (style Candy Crush / Bej
 
 <p align="right">(<a href="#readme-top">retour en haut</a>)</p>
 
-
-
 ### Built With
 
-* [![C][C]][https://www.c-language.org/]
-* [![Raylib][Raylib]][https://www.raylib.com/]
+* [![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)](https://www.c-language.org/)
+* [![Raylib](https://img.shields.io/badge/Raylib-8A2BE2?style=flat)](https://www.raylib.com/)
 
 <p align="right">(<a href="#readme-top">retour en haut</a>)</p>
-
 
 <!-- Prerequis -->
 ## Prerequis

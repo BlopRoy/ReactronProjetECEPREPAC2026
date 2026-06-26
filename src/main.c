@@ -13,21 +13,19 @@
 #include "raygui.h"
 
 int main(void) {
-    // Initialisation du générateur pseudo-aléatoire
     srand((unsigned int)time(NULL));
 
-    // 1. Initialisations de Raylib
     const int screenWidth = 1100;
     const int screenHeight = 600;
     InitWindow(screenWidth, screenHeight, "Reactron - Quantum Reactor Stabilizer");
     Texture2D background = LoadTexture("assets/cyberpunk_street_background.png");
     Texture2D midground = LoadTexture("assets/cyberpunk_street_midground.png");
     Texture2D foreground = LoadTexture("assets/cyberpunk_street_foreground.png");
-    InitAudioDevice();              // Initialize audio device
+    InitAudioDevice();
 
     Music music = LoadMusicStream("assets/bgm_old.mp3");
     PlayMusicStream(music);
-    bool pause = false;             // Music playing paused
+    bool pause = false;
 
     SetTargetFPS(60);
 
@@ -36,7 +34,6 @@ int main(void) {
         return -1; 
     }
 
-    // 2. Initialisation du Contexte de Jeu Unique
     ScrollingBackground backg;
     GameContext game = {0};
     game.state = STATE_MENU;
@@ -52,15 +49,12 @@ int main(void) {
 
     teste(&game);
 
-    // Variable interne pour rythmer la cascade (visuel fluide frame-by-frame)
     float cascade_timer = 0.0f;
-    const float CASCADE_DELAY = 0.15f; // Délai d'animation en secondes
+    const float CASCADE_DELAY = 0.15f;
 
-    // 3. Boucle de jeu principale
     while (!WindowShouldClose()) {
         UpdateMusicStream(music);
         
-        // --- MISE À JOUR DE LA LOGIQUE (Update) ---
         float dt = GetFrameTime();
 
         switch (game.state) {
@@ -86,35 +80,30 @@ int main(void) {
                 game.level.time_elapsed += dt;
                 check_game_conditions(&game); 
 
-                // Entrées Utilisateur : Déplacement dans la grille quantique
                 if (IsKeyPressed(KEY_UP) && game.cursor_y > 0) game.cursor_y--; 
                 if (IsKeyPressed(KEY_DOWN) && game.cursor_y < MAP_ROWS - 1) game.cursor_y++; 
                 if (IsKeyPressed(KEY_LEFT) && game.cursor_x > 0) game.cursor_x--;
                 if (IsKeyPressed(KEY_RIGHT) && game.cursor_x < MAP_COLS - 1) game.cursor_x++;
 
-                // Gestion de la Sélection et Permutation
                 if (IsKeyPressed(KEY_SPACE)) {
                     if (game.selected_x == -1) {
-                        // Premier verrouillage de cellule
                         game.selected_x = game.cursor_x;
                         game.selected_y = game.cursor_y;
                     } else {
-                        // Calcul de la distance de Manhattan (doit être adjacente stricte)
                         int dist = abs(game.selected_x - game.cursor_x) + abs(game.selected_y - game.cursor_y);
                         if (dist == 1) {
                             if (swap_cells(&game, game.selected_x, game.selected_y, game.cursor_x, game.cursor_y)) {
-                                game.level.cur_moves++; // Incrémente le compteur de coups légaux
-                                game.state = STATE_CASCADE; // Enclenchement de la réaction en chaîne
+                                game.level.cur_moves++;
+                                game.state = STATE_CASCADE;
                             }
                         }
-                        game.selected_x = -1; // Reset sélecteur dans tous les cas
+                        game.selected_x = -1;
                     }
                     teste(&game);
                 }
                 break;
 
             case STATE_CASCADE:
-                // Temporisation pour donner un effet visuel d'effondrement par étapes
                 cascade_timer += dt;
                 if (cascade_timer >= CASCADE_DELAY) {
                     cascade_timer = 0.0f;
@@ -126,14 +115,12 @@ int main(void) {
                             refill_top(&game);
                         }
                     } else {
-                        // Fin de la réaction en chaîne, le coeur s'est stabilisé
                         regenerate_if_blocked(&game); 
                         check_game_conditions(&game); 
                         if (game.state == STATE_CASCADE) {
                             game.state = STATE_GAMEPLAY; 
                         }
                     }
-                    //teste(&game);
                 }
                 break;
 
@@ -144,7 +131,6 @@ int main(void) {
                     load_level_config(&game, game.current_level_idx);
                     init_matrix(&game);
                     game.state = STATE_GAMEPLAY;
-                    teste(&game);
                 }
                 break;
 
@@ -155,39 +141,32 @@ int main(void) {
                     if (game.surcharge >= MAX_SURCHARGE) {
                         game.state = STATE_CLEAR; 
                     } else {
-                        // Relance le niveau en conservant la dégradation de surcharge
                         load_level_config(&game, game.current_level_idx);
                         init_matrix(&game);
                         game.state = STATE_GAMEPLAY;
                     }
-                    teste(&game);
                 }
                 break;
                 
             case STATE_CLEAR:
                 if (IsKeyPressed(KEY_ENTER)) { 
-                    // Wipe complet de la mémoire flash du réacteur
                     game.surcharge = 0;
                     game.current_level_idx = 1;
                     load_level_config(&game, 1);
                     init_matrix(&game);
                     save_progress(&game);
                     game.state = STATE_GAMEPLAY;
-                    teste(&game);
                 }
                 break;
         }
 
-        // --- DESSIN DE L'INTERFACE (Draw) --- 
         BeginDrawing();
         DrawMovingBackground(&backg,background,midground,foreground);
-        // Multiplier la taille de l'icône par 2 (elle passera de 16x16 à 32x32)
         GuiSetIconScale(2);
 
         if (game.state != STATE_MENU) {
             if (GuiButton((Rectangle){75, 20, 40, 40}, GuiIconText(ICON_HOUSE, ""))) {
         
-                // Si on était en train de jouer, on sécurise les données avant de quitter
                 if (game.state == STATE_GAMEPLAY || game.state == STATE_CASCADE) {
                     save_progress(&game); 
                 }
@@ -196,27 +175,20 @@ int main(void) {
             }
         }
 
-        // --- Dans votre bloc de dessin (BeginDrawing) ---
 
-        // 1. Définir la couleur selon l'état de votre variable 'pause'
         if (pause) {
-            // Si en pause : Fond Rouge (RED) en mode normal
             GuiSetStyle(BUTTON, BASE_COLOR_NORMAL, ColorToInt(DARKGRAY));
             GuiSetStyle(BUTTON, BASE_COLOR_FOCUSED, ColorToInt(BLACK)); // Survolé
         }
 
-        // 2. Dessiner le bouton (il appliquera automatiquement les couleurs définies au-dessus)
         if (GuiButton((Rectangle){20, 20, 40, 40}, GuiIconText(ICON_AUDIO, ""))) {
             pause = !pause;
             if (pause) PauseMusicStream(music);
             else ResumeMusicStream(music);
         }
 
-        // 3. IMPORTANT : Remettre la couleur par défaut après le bouton 
-        // pour ne pas modifier TOUS les autres boutons du jeu !
         GuiLoadStyleDefault();
 
-        // Remettre à la taille normale (1) pour la suite du code
         GuiSetIconScale(1);
 
         switch (game.state) {
@@ -229,7 +201,7 @@ int main(void) {
                 DrawInterface(&game); 
             break;
             case STATE_VICTORY:
-                DrawGridi(&game); // Dessin en arrière-plan pour effet visuel sympa
+                DrawGridi(&game);
                 DrawInterface(&game);
                 DrawVictoryScreen(&game); 
                 break;
@@ -248,11 +220,10 @@ int main(void) {
 
     save_progress(&game);
 
-    UnloadTexture(background);  // Unload background texture
-    UnloadTexture(midground);   // Unload midground texture
-    UnloadTexture(foreground);  // Unload foreground texture
+    UnloadTexture(background);
+    UnloadTexture(midground);
+    UnloadTexture(foreground);
 
-    // 4. Nettoyage et fermeture du contexte GPU
     CloseWindow();
     return 0;
 }

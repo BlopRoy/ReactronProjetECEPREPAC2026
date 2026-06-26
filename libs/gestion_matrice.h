@@ -10,7 +10,6 @@ bool apply_gravity(GameContext *ctx);
 void refill_top(GameContext *ctx);
 void regenerate_if_blocked(GameContext *ctx);
 
-// regarde s'il reste des coups possibles 
 bool has_valid_moves(GameContext *ctx);
 bool has_empty_cell(GameContext * ctx);
 

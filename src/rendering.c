@@ -8,12 +8,12 @@
 
 Color GetCellColor(CellType type) {
     switch (type) {
-        case CELL_R: return RED;       // Thermique
-        case CELL_B: return BLUE;      // Cryogénique
-        case CELL_G: return LIME;      // Plasma
-        case CELL_Y: return GOLD;      // Photonique
-        case CELL_V: return PURPLE;    // Gravitationnelle
-        default:     return BLACK;     // CELL_EMPTY
+        case CELL_R: return RED;
+        case CELL_B: return BLUE;
+        case CELL_G: return LIME;
+        case CELL_Y: return GOLD;
+        case CELL_V: return PURPLE;
+        default:     return BLACK;
     }
 }
 
@@ -29,7 +29,6 @@ const char* GetCellName(CellType type) {
 }
 
 void DrawGridi(const GameContext *ctx) {
-    // Dessin du conteneur extérieur du réacteur
     DrawRectangleLines(GRID_OFFSET_X - 4, GRID_OFFSET_Y - 4, (MAP_COLS * CELL_SIZE) + 8, (MAP_ROWS * CELL_SIZE) + 8, WHITE);
 
     for (int r = 0; r < MAP_ROWS; r++) {
@@ -40,27 +39,21 @@ void DrawGridi(const GameContext *ctx) {
             CellType type = ctx->matrix[r][c];
 
             if (type != CELL_EMPTY) {
-                // Rendu des noyaux d'énergie
                 DrawRectangle(posX + 2, posY + 2, CELL_SIZE - 4, CELL_SIZE - 4, GetCellColor(type));
                 DrawRectangleLines(posX + 2, posY + 2, CELL_SIZE - 4, CELL_SIZE - 4, Fade(WHITE, 0.3f));
             } else {
-                // Case vide du réacteur
                 DrawRectangle(posX + 2, posY + 2, CELL_SIZE - 4, CELL_SIZE - 4, Fade(GRAY, 0.1f));
             }
-
-            // Affichage des feedbacks d'alignements imminents (en cascade)
             if (ctx->marked[r][c] == 1) {
                 DrawRectangle(posX + 2, posY + 2, CELL_SIZE - 4, CELL_SIZE - 4, Fade(WHITE, 0.6f));
             }
         }
     }
 
-    // Rendu graphique du curseur utilisateur
     int cursor_posX = GRID_OFFSET_X + (ctx->cursor_x * CELL_SIZE);
     int cursor_posY = GRID_OFFSET_Y + (ctx->cursor_y * CELL_SIZE);
     DrawRectangleLinesEx((Rectangle){ (float)cursor_posX, (float)cursor_posY, CELL_SIZE, CELL_SIZE }, 2.5f, WHITE);
 
-    // Rendu de la cellule sélectionnée pour couplage/permutation
     if (ctx->selected_x != -1 && ctx->selected_y != -1) {
         int sel_posX = GRID_OFFSET_X + (ctx->selected_x * CELL_SIZE);
         int sel_posY = GRID_OFFSET_Y + (ctx->selected_y * CELL_SIZE);
@@ -71,12 +64,10 @@ void DrawGridi(const GameContext *ctx) {
 void DrawInterface(const GameContext *ctx) {
     int sidebar_X = GRID_OFFSET_X + (MAP_COLS * CELL_SIZE) + 40;
 
-    // Titre et informations de l'opérateur
     DrawText("REACTRON CORE MONITOR", sidebar_X, 40, 22, GREEN);
     DrawText(TextFormat("Operateur: %s", ctx->operator_name[0] ? ctx->operator_name : "Inconnu"), sidebar_X, 75, 16, LIGHTGRAY);
     DrawText(TextFormat("Niveau : %d", ctx->current_level_idx), sidebar_X, 100, 16, WHITE);
 
-    // Section 1: Contraintes énergétiques (Coups / Temps)
     DrawText(TextFormat("Coups restants : %d / %d", ctx->level.cur_moves, ctx->level.max_moves), sidebar_X, 140, 16, 
              (ctx->level.cur_moves >= ctx->level.max_moves - 5) ? RED : WHITE);
 
@@ -85,12 +76,10 @@ void DrawInterface(const GameContext *ctx) {
     DrawText(TextFormat("Stabilite temps : %.1fs / %.1fs", time_left, ctx->level.time_limit), sidebar_X, 170, 16, 
              (time_left < 30.0f) ? RED : WHITE);
     
-    // Jauge visuelle de temps
     float pct_time = time_left / ctx->level.time_limit;
     DrawRectangle(sidebar_X, 195, 240, 12, DARKGRAY);
     DrawRectangle(sidebar_X, 195, (int)(240 * pct_time), 12, (pct_time < 0.25f) ? RED : GOLD);
 
-    // Section 2: Objectifs d'Énergie Quantique
     DrawText("OBJECTIFS ABSORPTION :", sidebar_X, 235, 16, BLUE);
     int current_ui_y = 265;
     for (int i = 1; i < CELL_COUNT; i++) {
@@ -105,7 +94,6 @@ void DrawInterface(const GameContext *ctx) {
         }
     }
 
-    // Section 3: Sécurité Anti-Surcharge du Réacteur
     DrawText("BARRES DE SECURITE CORRUPTIONS :", sidebar_X, 460, 14, MAROON);
     for (int s = 0; s < MAX_SURCHARGE; s++) {
         Color bar_color = (s < ctx->surcharge) ? RED : DARKGRAY;
@@ -121,7 +109,6 @@ void DrawMenuScreen(GameContext *ctx) {
     DrawText("REACTRON", 250, 180, 50, GREEN);
     DrawText("QUANTUM REACTOR STABILIZER", 250, 240, 20, LIGHTGRAY);
     
-    // Boîte de saisie basique pour le nom de l'opérateur via Raylib
     DrawText("Entrez le badge de l'operateur :", 250, 340, 16, WHITE);
     
     int key = GetCharPressed();
@@ -183,23 +170,18 @@ void DrawMovingBackground(ScrollingBackground *b,Texture2D background,Texture2D 
     b->scrollingMid -= 0.5f;
     b->scrollingFore -= 1.0f;
 
-    // NOTE: Texture is scaled twice its size, so it sould be considered on scrolling
     if (b->scrollingBack <= -background.width*2) b->scrollingBack = 0;
     if (b->scrollingMid <= -midground.width*2) b->scrollingMid = 0;
     if (b->scrollingFore <= -foreground.width*2) b->scrollingFore = 0;
 
     ClearBackground(GetColor(0x052c46ff));
 
-    // Draw background image twice
-    // NOTE: Texture is scaled twice its size
     DrawTextureEx(background, (Vector2){ b->scrollingBack, 170 }, 0.0f, 2.0f, WHITE);
     DrawTextureEx(background, (Vector2){ background.width*2 + b->scrollingBack, 170 }, 0.0f, 2.0f, WHITE);
 
-    // Draw midground image twice
     DrawTextureEx(midground, (Vector2){ b->scrollingMid, 170 }, 0.0f, 2.0f, WHITE);
     DrawTextureEx(midground, (Vector2){ midground.width*2 + b->scrollingMid, 170 }, 0.0f, 2.0f, WHITE);
 
-    // Draw foreground image twice
     DrawTextureEx(foreground, (Vector2){ b->scrollingFore, 220 }, 0.0f, 2.0f, WHITE);
     DrawTextureEx(foreground, (Vector2){ foreground.width*2 + b->scrollingFore, 220 }, 0.0f, 2.0f, WHITE);
 

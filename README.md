@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/BlopRoy/ReactronProjetECEPREPAC2026">
-    <img src="assets/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/image/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Reactron</h3>

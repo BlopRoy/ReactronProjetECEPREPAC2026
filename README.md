@@ -241,7 +241,7 @@ ReactronProjetECEPREPAC2026/
 ```
 
 ---
-### 💾 Sauvegarde
+### Sauvegarde
 
 La progression est enregistrée dans `save.txt` (à la racine du binaire) au format :
 

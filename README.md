@@ -113,7 +113,7 @@ Le jeu reprend les mécaniques d'un *match-3* classique (style Candy Crush / Bej
 <!-- Installation -->
 ## Installation
 
-1. Clone the repo
+1. Clone le repo
 
     ```sh
     git clone https://github.com/BlopRoy/ReactronProjetECEPREPAC2026.git
@@ -128,17 +128,17 @@ Le jeu reprend les mécaniques d'un *match-3* classique (style Candy Crush / Bej
     Ouvrez votre terminale et allez à la racine de votre projet.
     
     ```
-    cmake -S . -B .\build -G "MinGW Makefiles"
+    cmake -S . -B ./build
     ```
 
     ```
-    cmake --build .\build
+    cmake --build ./build
     ```
 
 2. Lancement
     
     ```
-    .\build\bin\PROJET.exe
+    ./build/bin/PROJET
     ```
 
 ### Windows
